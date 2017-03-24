@@ -9,8 +9,8 @@ from mapgamenumber import gamenumber
 
 def main():
 
-    pw = ''
-    host_name = ''
+    pw = 'anton'
+    host_name = '127.0.0.1'
 
     source = 'gamexml/'
     cnx = mysql.connector.connect(user='root', password=pw, host=host_name, database='SVFF')
@@ -24,6 +24,8 @@ def main():
 
     comp_dict = gamenumber()
 
+    #print game_id_list
+    #exit()
 
     for root, dirs, filenames in os.walk(source):
         for f in filenames:

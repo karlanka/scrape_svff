@@ -21,16 +21,19 @@ def parse_games(xmlroot, year, cursor, cnx, comp_dict):
 
     for team in xmlroot.iter('team'):
         teams = team.get('short-name')
+        team_long = team.get('long-name')
         h_or_a = team.get('home-team')
         teamid = team.get('id')
 
         if h_or_a == 'True':
             home_team = teams
             homeid = teamid
+            home_team_long = team_long
 
         if h_or_a == 'False':
             away_team = teams
             awayid = teamid
+            away_team_long = team_long
 
     for score in xmlroot.iter('score'):
         home_scoreFT = score.get('home-team')
@@ -40,10 +43,10 @@ def parse_games(xmlroot, year, cursor, cnx, comp_dict):
 
 
     sql_add_data = ("""INSERT IGNORE INTO games
-            (GameID, Competition, Supplier, Date, Created, HomeTeam, HomeTeamID, AwayTeam, AwayTeamID, HomeTeamFT, AwayTeamFT, HomeTeamHT, AwayTeamHT)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""")
+            (GameID, Competition, Supplier, Date, Created, HomeTeam, home_team_long, HomeTeamID, AwayTeam, away_team_long, AwayTeamID, HomeTeamFT, AwayTeamFT, HomeTeamHT, AwayTeamHT)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""")
 
-    data_arg = (gid, comp, supplier, _date, game_created, home_team, homeid, away_team, awayid, home_scoreFT, away_scoreFT, home_scoreHT, away_scoreHT)
+    data_arg = (gid, comp, supplier, _date, game_created, home_team, home_team_long, homeid, away_team, away_team_long, awayid, home_scoreFT, away_scoreFT, home_scoreHT, away_scoreHT)
 
     cursor.execute(sql_add_data, data_arg)
 
