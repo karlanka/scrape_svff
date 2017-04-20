@@ -13,8 +13,8 @@ import datetime
 
 
 def date_list():
-    pw = ''
-    host_name = ''
+    pw = 'anton'
+    host_name = 'localhost'
 
     cnx = mysql.connector.connect(user='root', password=pw, host=host_name, database='SVFF')
     cursor = cnx.cursor(buffered=True)

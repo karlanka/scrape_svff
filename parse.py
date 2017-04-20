@@ -144,6 +144,7 @@ def parse_events(xmlroot, year, cursor, cnx, comp_dict):
         away_score = event.get('away-score')
         home_score = event.get('home-score')
         event_id = event.get('id')
+        event_id += gid
         _type = event.get('type')
         type_desc = event.get('type-desc')
         #_date = event.get('date')
