@@ -40,7 +40,7 @@ def date_list():
         list_of_dates.append(day)
 
 
-def main():
+def get_game_id():
 
     dates = date_list()
 
@@ -87,5 +87,5 @@ def main():
 
     wd.quit()
 
-if __name__ == '__main__':
-    main()
+#if __name__ == '__main__':
+ #   main()

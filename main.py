@@ -5,6 +5,7 @@ import mysql.connector
 
 from parse import parse_games, parse_players, parse_events
 from mapgamenumber import gamenumber
+from getgameid import get_game_id
 
 
 def main():
@@ -51,4 +52,5 @@ def main():
 
 
 if __name__ == '__main__':
+    get_game_id()
     main()
